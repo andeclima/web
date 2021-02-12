@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Clientes from './pages/Clientes'
+// import Cadastro from './pages/Cadastro'
 
 ReactDOM.render(
-  <App />,
+  <Clientes />,
   document.getElementById('root')
 );
