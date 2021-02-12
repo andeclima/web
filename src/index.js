@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clientes from './pages/Clientes'
-// import Cadastro from './pages/Cadastro'
+import Routes from './routes'
 
 ReactDOM.render(
-  <Clientes />,
+  <Routes />,
   document.getElementById('root')
 );
