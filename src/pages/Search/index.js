@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import BikeItem from '../../components/BikeItem'
 import PageHeader from '../../components/PageHeader'
-import background from '../../assets/images/signup-new.jpg'
+import {Link} from 'react-router-dom'
 import './style.css'
+import BikeItemSearch from '../../components/BikeItemSearch'
 
-class Signup extends Component {
+class Bikes extends Component {
 
     constructor(props) {
         super(props)
@@ -22,24 +23,29 @@ class Signup extends Component {
 
     handleSearch(e) {
         e.preventDefault()
-        console.log(this.state.nome)
-        console.log(this.state.email)
-        console.log(this.state.municipio)
-        console.log(this.state.uf)
-        console.log(this.state.senha)
-        console.log(this.state.confirmaSenha)
     }
 
     render() {
         return (
-            <div className='search-page'>
+            <div className='bikes-page'>
                 <PageHeader />
-                <div className="search-wrapper">
-                    <div className="search">
+                <div className="bikes-wrapper">
+                    <div className="bikes">
+                        <h1>Pesquisar Bicicleta</h1>
+                        <p>Aqui você pode encontar uma bicicleta que já tenha sido previamente registrado conosco</p>
                         <form onSubmit={this.handleSearch}>
-                            <h1>Pesquisa</h1>
-                            <p>Aqui você pode verificar se a bicicleta que você procura está registrada conosco</p>
+                            <input
+                                type="text"
+                                placeholder="Tag"
+                                onChange={e => this.setState({ email: e.target.value })} />
+                            <button type="submit">Pesquisar</button>
+                            {this.state.error && <p>{this.state.error}</p>}
                         </form>
+                        <div className="bikes-items">
+                            <BikeItemSearch />
+                            <BikeItemSearch />
+                            <BikeItemSearch />
+                        </div>
                     </div>
                 </div>                
             </div>
@@ -47,4 +53,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup
+export default Bikes

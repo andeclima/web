@@ -11,3 +11,68 @@
     flex-direction: row;
     margin: 30px;
 }
+
+.profile-page .profile-wrapper .profile {
+    justify-content: center;
+    height: 100vh;
+    background-color: #eceef2;
+}
+
+.profile-page .profile-wrapper .profile h1 {
+    font-size: 3rem;
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+}
+
+.profile-page .profile-wrapper .profile p {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.profile-page .profile-wrapper .profile form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+}
+
+.profile-page .profile-wrapper .profile form input {
+    height: 46px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    color: #777;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.profile form input::placeholder {
+    color: #999;
+}
+
+.profile-page .profile-wrapper .profile form button {
+    color: #fff;
+    font-size: 16px;
+    background: #fc6963;
+    height: 56px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.profile-page .profile-wrapper .profile form hr {
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid #cdcdcd;
+    width: 100%;
+}
+
+.profile-page .profile-wrapper .profile form a {
+    font-size: 16;
+    font-weight: bold;
+    color: #999;
+    text-decoration: none;
+}

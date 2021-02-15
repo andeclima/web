@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
+import background from '../../assets/images/bike-landing-3.jpg'
 import './style.css'
 
 class Landing extends Component {
@@ -23,37 +24,16 @@ class Landing extends Component {
                 <PageHeader />
                 <div className="landing-wrapper">
                     <div className="landing">
-                        <h1>Bem-vindo ao ReactJS novamente!</h1>
-                        <h2>Versao 2.0</h2>
-                        <h1>Landing</h1>
-                        <p>Página de início</p>
-                        <h3>Menu Principal</h3>
-                        <ul>
-                            <li>
-                                <Link to='/'>Landing</Link>
-                            </li>
-                            <li>
-                                <Link to='/search'>Consultar</Link>
-                            </li>
-                            <li>
-                                <Link to='/login'>Login</Link>
-                            </li>
-                            <li>
-                                <Link to='/signup'>Cadastro</Link>
-                            </li>
-                            <li>
-                                <Link to='/profile'>Perfil</Link>
-                            </li>
-                            <li>
-                                <Link to='/bikes'>Bicicletas</Link>
-                            </li>
-                            <li>
-                                <Link to='/register'>Registrar</Link>
-                            </li>
-                            <li>
-                                <Link to='/clientes'>Clientes</Link>
-                            </li>
-                        </ul>
+                        <h1>Bem-vindo</h1>
+                        <p>Estamos aqui para ajudar você a cuidar de uma importante parte de sua vida: sua bike!</p>
+                        <div className="botoes">
+                            <Link className="linkLogin" to="/login">Login</Link>
+                            <Link className="linkSearch" to="/search">Pesquisar bike</Link>
+                        </div>
+                    </div>
+                    <div className="landing-image" style={{
+                                backgroundImage: `url(${background})`
+                            }}>
                     </div>
                 </div>                
             </div>

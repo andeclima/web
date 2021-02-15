@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
-import background from '../../assets/images/signup-new.jpg'
+import api from '../../services/api'
+import { getToken } from '../../services/auth'
 import './style.css'
+
+import queryString from 'query-string'
 
 class Register extends Component {
 
@@ -11,23 +14,59 @@ class Register extends Component {
         this.state = {
             msg: '',
             nome: '',
-            email: '',
-            municipio: '',
-            uf: '',
-            senha: '',
-            confirmaSenha: ''
+            numeroSerie: '',
+            marca: '',
+            modelo: '',
+            cor: '',
+            informacoes: '',
+            idBicicleta: null
         }
         this.handleRegister = this.handleRegister.bind(this)
+        this.pesquisaBike = this.pesquisaBike.bind(this)
     }
 
-    handleRegister(e) {
+    componentDidMount() {
+        const params = queryString.parse(this.props.location.search)
+        if (params.id) {
+            this.setState({
+                idBicicleta: params.id
+            })
+            this.pesquisaBike(params.id)
+        }
+    }
+
+    async pesquisaBike(idBike) {
+        const idCliente = getToken();
+        const resp = await api.get(`/clientes/${idCliente}/bicicletas/${idBike}`)
+        const bike = resp.data
+        if (bike) {
+            this.setState({
+                nome: bike.nome,
+                numeroSerie: bike.numeroSerie,
+                marca: bike.marca,
+                modelo: bike.modelo,
+                cor: bike.cor,
+                informacoes: bike.informacoesAdicionais
+            })
+            console.log(this.state)
+        }
+    }
+
+    async handleRegister(e) {
         e.preventDefault()
-        console.log(this.state.nome)
-        console.log(this.state.email)
-        console.log(this.state.municipio)
-        console.log(this.state.uf)
-        console.log(this.state.senha)
-        console.log(this.state.confirmaSenha)
+
+        const idCliente = getToken();
+        const {nome, numeroSerie, marca, modelo, cor, informacoes} = this.state;
+        const novaBicicleta = {nome, numeroSerie, marca, modelo, cor, informacoes}
+        const response = await api.post(`/clientes/${idCliente}/bicicletas`, novaBicicleta)
+        const novoRegistro = response.data
+        if (novoRegistro) {
+            this.props.history.push("/bikes");
+        } else {
+            this.setState({
+                msg: 'Erro no registro da bicicleta'
+            })
+        }
     }
 
     render() {
@@ -36,9 +75,37 @@ class Register extends Component {
                 <PageHeader />
                 <div className="register-wrapper">
                     <div className="register">
+                        <h1>Registro</h1>
+                        <p>Informe os dados da bicicleta que você deseja registrar</p>
                         <form onSubmit={this.handleRegister}>
-                            <h1>Registro</h1>
-                            <p>Informe os dados de sua nova bicicleta</p>
+                            <input
+                                type="text"
+                                placeholder="Nome"
+                                onChange={e => this.setState({ nome: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Número de Série"
+                                onChange={e => this.setState({ numeroSerie: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Marca"
+                                onChange={e => this.setState({ marca: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Modelo"
+                                onChange={e => this.setState({ modelo: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Cor"
+                                onChange={e => this.setState({ cor: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Informações Adicionais"
+                                onChange={e => this.setState({ informacoes: e.target.value })} />
+                            <button type="submit">Salvar</button>
+                            {this.state.msg && <p>{this.state.msg}</p>}
+                            <hr />
+                            <Link to="/bikes">Voltar</Link>
                         </form>
                     </div>
                 </div>                

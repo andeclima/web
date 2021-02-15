@@ -1,0 +1,80 @@
+.bike-item {
+    background: #fff;
+    border: 1px solid #e6e6f0;
+    border-radius: 0.8rem;
+    margin-top: 2.4rem;
+    overflow: hidden;
+    width: 400px;
+    margin-right: 2.4rem;
+}
+
+.bike-item header {
+    padding: 3.2rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.bike-item header img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background-color: #04d361;
+    padding: 10px;
+}
+
+.bike-item header div {
+    margin-left: 2.4rem;
+}
+
+.bike-item header div strong {
+    font: 700 2.4rem Archivo;
+    display: block;
+    color: #32264d;
+}
+
+.bike-item header span {
+    font-size: 1.6rem;
+    display: block;
+    margin-top: 0.4rem;
+}
+
+.bike-item p {
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+}
+
+.bike-item footer {
+    padding: 3.2rem 2rem;
+    background: #fafafc;
+    border-top: 1px solid #e6e6f0;
+    margin-top: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bike-item footer p strong {
+    color: #8257e5;
+    font-size: 1.6rem;
+    display: block;
+}
+
+.bike-item a.botaoLink {
+    width: 20rem;
+    height: 5.6rem;
+    background: #04d361;
+    color: #fff;
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.7rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.2s;
+}
+
+.bike-item a.botaoLink:hover {
+    background: #04bf58;
+}

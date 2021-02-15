@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
-import background from '../../assets/images/signup-new.jpg'
 import './style.css'
 
 class Profile extends Component {
@@ -17,10 +16,10 @@ class Profile extends Component {
             senha: '',
             confirmaSenha: ''
         }
-        this.handleRegister = this.handleRegister.bind(this)
+        this.handleProfile = this.handleProfile.bind(this)
     }
 
-    handleRegister(e) {
+    handleProfile(e) {
         e.preventDefault()
     }
 
@@ -30,9 +29,37 @@ class Profile extends Component {
                 <PageHeader />
                 <div className="profile-wrapper">
                     <div className="profile">
+                        <h1>Perfil</h1>
+                        <p>Aqui você pode atualizar os seus dados em nossa plataforma</p>
                         <form onSubmit={this.handleProfile}>
-                            <h1>Perfil</h1>
-                            <p>Esses são os seus dados que estão mantidos conosco</p>
+                            <input
+                                type="text"
+                                placeholder="Nome completo"
+                                onChange={e => this.setState({ nome: e.target.value })} />
+                            <input
+                                type="email"
+                                placeholder="Endereço de e-mail"
+                                onChange={e => this.setState({ email: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="Município"
+                                onChange={e => this.setState({ municipio: e.target.value })} />
+                            <input
+                                type="text"
+                                placeholder="UF"
+                                onChange={e => this.setState({ uf: e.target.value })} />
+                            <input
+                                type="password"
+                                placeholder="Senha"
+                                onChange={e => this.setState({ senha: e.target.value })} />
+                            <input
+                                type="password"
+                                placeholder="Repita sua senha"
+                                onChange={e => this.setState({ confirmaSenha: e.target.value })} />
+                            <button type="submit">Salvar</button>
+                            {this.state.msg && <p>{this.state.msg}</p>}
+                            <hr />
+                            <Link to="/">Voltar</Link>
                         </form>
                     </div>
                 </div>                

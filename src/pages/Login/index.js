@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
 import background from '../../assets/images/bground-login.jpg'
+import api from '../../services/api'
 import './style.css'
+import { doLogin } from '../../services/auth'
 
 class Login extends Component {
 
@@ -16,17 +18,30 @@ class Login extends Component {
         this.handleLogin = this.handleLogin.bind(this)
     }
 
-    handleLogin(e) {
+    async handleLogin(e) {
         e.preventDefault()
-        console.log(this.state.email)
-        console.log(this.state.senha)
+        const {email, senha} = this.state
+        try {
+            const response = await api.post("/login", { email, senha });
+            const cliente = response.data
+            // console.log(response);
+            if (cliente) {
+                doLogin(cliente.id);
+                this.props.history.push("/bikes");
+            }
+          } catch (err) {
+            // console.log(err);
+            this.setState({
+              error:
+                "Usuário ou senha inválido! Informe os dados corretos."
+            });
+          }
     }
 
     render() {
         return (
             <div className='login-page'>
                 <PageHeader />
-                
                 <div className="login-wrapper">
                     <div className="login">
                         <form onSubmit={this.handleLogin}>

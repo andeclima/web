@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #eceef2;
-    height: 100vh;
+    height: 100%;
     width: 90vw;
 }
 
@@ -10,4 +10,24 @@
     display: flex;
     flex-direction: row;
     margin: 30px;
+}
+
+.bikes-page .bikes-wrapper .bikes-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bikes-page .bikes-wrapper .bikes a {
+    display: block;
+    margin-top: 1.2em;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16;
+    background: #fc6963;
+    padding: 16px;
+    border: 0;
+    border-radius: 5px;
+    width: 20rem;
+    text-align: center;
 }
